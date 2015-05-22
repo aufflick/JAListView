@@ -429,7 +429,12 @@ NSString * const JAListViewDraggingPasteboardType = @"JAListViewDraggingPasteboa
     
     NSPoint dragPoint = viewUnderMouse.frame.origin;
     dragPoint.y += viewUnderMouse.bounds.size.height;
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+    //TODO: could fix this, but probably we'll eliminate JAListView from the UI anyway
     [self dragImage:masterImage at:dragPoint offset:NSZeroSize event:event pasteboard:[NSPasteboard pasteboardWithName:NSDragPboard] source:self slideBack:YES];
+#pragma clang diagnostic pop
 }
 
 - (void)keyDown:(NSEvent *)event {
